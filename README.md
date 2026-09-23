@@ -1,10 +1,23 @@
-# Kampüs Etkinlikleri
+# Web Geliştirme – Kampüs Etkinlikleri
 
-Kampüs etkinliklerini listeleyen, ayrıntılarını gösteren ve yeni etkinlik eklemeye yarayan web uygulaması. Sprint 1'de yalnızca HTML ile iskelet kuruldu (CSS ve JavaScript yok).
+Kampüs etkinliklerini listeleyen, ayrıntılarını gösteren ve yeni etkinlik eklemeye yarayan web uygulaması. Uygulama dönem boyunca sprintler hâlinde geliştirilir; her sprint kendi klasöründe durur ve ayrı bir adreste yayındadır.
 
-**Canlı adres:** https://BURAYA-VERCEL-ADRESI.vercel.app
+## Sprintler
 
-## Sprint 1 sayfaları
+| Sprint | Konu | Klasör | Etiket | Canlı adres |
+|---|---|---|---|---|
+| Sprint 1 | HTML, Git ve yayına alma | `sprint1/` | `sprint-01` | https://BURAYA-VERCEL-ADRESI.vercel.app |
+
+## Klasör yapısı
+
+    web-development/
+      sprint1/
+      .gitignore
+      README.md
+
+## Sprint 1 – HTML, Git ve Yayına Alma
+
+Uygulamanın iskeleti yalnızca HTML ile kuruldu; CSS ve JavaScript kullanılmadı.
 
 | Sayfa | İçerik |
 |---|---|
@@ -14,9 +27,9 @@ Kampüs etkinliklerini listeleyen, ayrıntılarını gösteren ve yeni etkinlik 
 | `etkinlik-ekle.html` | Yeni etkinlik formu |
 | `etkinlik-guncelle.html` | Doldurulmuş güncelleme formu |
 
-## Çalıştırma
+## Yayına alma
 
-`sprint1/index.html` dosyasını tarayıcıda açmak yeterli. Vercel'de Root Directory: `sprint1`.
+Her sprint Vercel'de ayrı bir proje olarak yayınlanır. Framework: Other, build komutu yok, Root Directory ilgili sprint klasörü (örneğin `sprint1`).
 
 ## Hazırlayan
 
