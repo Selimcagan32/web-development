@@ -6,7 +6,7 @@ Kampüs etkinliklerini listeleyen, ayrıntılarını gösteren ve yeni etkinlik 
 
 | Sprint | Konu | Klasör | Etiket | Canlı adres |
 |---|---|---|---|---|
-| Sprint 1 | HTML, Git ve yayına alma | `sprint1/` | `sprint-01` | https://BURAYA-VERCEL-ADRESI.vercel.app |
+| Sprint 1 | HTML, Git ve yayına alma | `sprint1/` | `sprint-01` | https://web-development-tau-virid.vercel.app/index.html |
 
 ## Klasör yapısı
 
