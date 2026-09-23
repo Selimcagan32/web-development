@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etkinlik Güncelle | Kampüs Etkinlikleri</title>
+</head>
+<body>
+  <header>
+    <h1>Etkinlik Güncelle</h1>
+    <nav>
+      <a href="index.html">Ana Sayfa</a>
+      <a href="etkinlikler.html">Etkinlikler</a>
+      <a href="etkinlik-detay.html">Detay</a>
+      <a href="etkinlik-ekle.html">Ekle</a>
+    </nav>
+  </header>
+
+  <main>
+    <form action="etkinlikler.html" method="get">
+      <p>
+        <label for="ad">Etkinlik Adı</label><br>
+        <input type="text" id="ad" name="ad" value="Kariyer Günleri 2026" required>
+      </p>
+      <p>
+        <label for="kategori">Kategori</label><br>
+        <select id="kategori" name="kategori" required>
+          <option value="seminer" selected>Seminer</option>
+          <option value="atolye">Atölye</option>
+          <option value="yarisma">Yarışma</option>
+        </select>
+      </p>
+      <p>
+        <label for="tarih">Tarih</label><br>
+        <input type="date" id="tarih" name="tarih" value="2026-10-12" required>
+      </p>
+      <p>
+        <label for="saat">Saat</label><br>
+        <input type="time" id="saat" name="saat" value="14:00" required>
+      </p>
+      <p>
+        <label for="yer">Yer</label><br>
+        <input type="text" id="yer" name="yer" value="A Blok Konferans Salonu" required>
+      </p>
+      <p>
+        <label for="aciklama">Açıklama</label><br>
+        <textarea id="aciklama" name="aciklama" rows="4" cols="30" required>Sektörden konuşmacılarla staj ve iş fırsatları üzerine söyleşi.</textarea>
+      </p>
+      <p>
+        <button type="submit">Güncelle</button>
+      </p>
+    </form>
+  </main>
+
+  <footer>
+    <p>Selim Memiş Çağan · 2416501009 · 2026</p>
+  </footer>
+</body>
+</html>
