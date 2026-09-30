@@ -1,35 +1,28 @@
-# Web Geliştirme – Kampüs Etkinlikleri
+# Kampüs Etkinlikleri
 
-Kampüs etkinliklerini listeleyen, ayrıntılarını gösteren ve yeni etkinlik eklemeye yarayan web uygulaması. Uygulama dönem boyunca sprintler hâlinde geliştirilir; her sprint kendi klasöründe durur ve ayrı bir adreste yayındadır.
-
-## Sprintler
-
-| Sprint | Konu | Klasör | Etiket | Canlı adres |
-|---|---|---|---|---|
-| Sprint 1 | HTML, Git ve yayına alma | `sprint1/` | `sprint-01` | https://web-development-tau-virid.vercel.app/index.html |
-
-## Klasör yapısı
-
-    web-development/
-      sprint1/
-      .gitignore
-      README.md
+Bu repo, Süleyman Demirel Üniversitesi Bilgisayar Mühendisliği Web Teknolojileri ve Programlama dersi kapsamında geliştirdiğim ders içi çalışmaları içerir. Proje dönem boyunca sprintler hâlinde ilerler ve her sprint kendi klasöründe yer alır.
 
 ## Sprint 1 – HTML, Git ve Yayına Alma
 
-Uygulamanın iskeleti yalnızca HTML ile kuruldu; CSS ve JavaScript kullanılmadı.
+İlk sprintte sitenin temel yapısı yalnızca HTML kullanılarak oluşturuldu. Ana sayfa, etkinlik listesi, etkinlik detayı, etkinlik ekleme ve etkinlik güncelleme olmak üzere toplam beş sayfa hazırlandı. Bu sprintte CSS veya JavaScript kullanılmadı.
 
-| Sayfa | İçerik |
-|---|---|
-| `index.html` | Uygulamanın amacı, yaklaşan iki etkinlik |
-| `etkinlikler.html` | Etkinlik listesi (her etkinlik bir hücre) ve Ayın Programı tablosu |
-| `etkinlik-detay.html` | Afiş, künye (tarih, yer, kategori, kontenjan), açıklama |
-| `etkinlik-ekle.html` | Yeni etkinlik formu |
-| `etkinlik-guncelle.html` | Doldurulmuş güncelleme formu |
+Kodlar `sprint1/` klasöründe yer alır.
 
-## Yayına alma
+## Sprint 2 – CSS ve Responsive Tasarım
 
-Her sprint Vercel'de ayrı bir proje olarak yayınlanır. Framework: Other, build komutu yok, Root Directory ilgili sprint klasörü (örneğin `sprint1`).
+İkinci sprintte, Sprint 1'de oluşturulan HTML yapısı korunarak CSS ile tasarım geliştirildi. Tasarım mobil öncelikli olarak hazırlandı; etkinlikler telefonda tek sütun, daha geniş ekranlarda ise birden fazla sütun şeklinde görüntülenir.
+
+Kullanılan renk paleti ve yazı tipi öğrenci numarasından türetilmiştir.
+
+Kodlar `sprint2/` klasöründe, stil dosyası ise `sprint2/css/2416501009.css` konumunda bulunur.
+
+## Yayına Alma
+
+Proje Vercel kullanılarak yayınlanmaktadır. Vercel ayarlarında framework olarak `Other` seçilir, herhangi bir build komutu kullanılmaz ve Root Directory olarak ilgili sprint klasörü belirtilir.
+
+Son sprintin canlı adresi:
+
+https://web-development-tau-virid.vercel.app/index.html
 
 ## Hazırlayan
 
