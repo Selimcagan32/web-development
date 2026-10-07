@@ -1,0 +1,409 @@
+/* Selim Memiş Çağan — 2416501009 */
+
+:root {
+  --no: 2416501009;
+  --ton: mod(var(--no), 360);
+  --renk-ana: hsl(var(--ton) 65% 38%);
+  --renk-zemin: hsl(var(--ton) 30% 97%);
+  --font: "Lucida Console", monospace;
+  --bosluk-m: 1rem;
+  --kose: 8px;
+}
+
+/* aynı paletten türeyen yardımcı değişkenler */
+:root {
+  --renk-ana-koyu: hsl(var(--ton) 65% 28%);
+  --renk-metin: hsl(var(--ton) 25% 15%);
+  --renk-soluk: hsl(var(--ton) 12% 38%);
+  --renk-kenar: hsl(var(--ton) 20% 84%);
+  --renk-kart: hsl(0 0% 100%);
+  --renk-beyaz: hsl(0 0% 100%);
+  --renk-hata: hsl(0 72% 42%);
+  --renk-hata-zemin: hsl(0 80% 97%);
+  --renk-basari: hsl(130 60% 28%);
+  --renk-basari-zemin: hsl(130 60% 96%);
+  --bosluk-k: 0.5rem;
+  --bosluk-b: 2rem;
+  --icerik-genislik: 64rem;
+}
+
+/* ---------- Genel ---------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font);
+  margin: 0;
+  background: var(--renk-zemin);
+  color: var(--renk-metin);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+h1, h2, h3 {
+  line-height: 1.25;
+  margin: 0 0 var(--bosluk-k);
+}
+
+h2 {
+  font-size: 1.35rem;
+  margin-top: var(--bosluk-b);
+}
+
+h3 {
+  font-size: 1.1rem;
+}
+
+p {
+  margin: 0 0 var(--bosluk-k);
+}
+
+a {
+  color: var(--renk-ana);
+  font-weight: bold;
+}
+
+a:hover {
+  color: var(--renk-ana-koyu);
+}
+
+:focus-visible {
+  outline: 3px solid var(--renk-ana);
+  outline-offset: 2px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Header, main ve footer aynı ortalı genişlikte */
+body > header,
+body > main,
+body > footer {
+  padding-inline: max(var(--bosluk-m), calc((100% - var(--icerik-genislik)) / 2));
+}
+
+/* ---------- Başlık ve menü (5 sayfada aynı) ---------- */
+body > header {
+  background: var(--renk-ana);
+  color: var(--renk-beyaz);
+  display: flex;
+  flex-direction: column;
+  gap: var(--bosluk-k);
+  padding-block: var(--bosluk-m);
+}
+
+body > header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--bosluk-k);
+}
+
+nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding-inline: var(--bosluk-m);
+  color: var(--renk-beyaz);
+  text-decoration: none;
+  border-radius: var(--kose);
+}
+
+nav a:hover {
+  background: var(--renk-ana-koyu);
+  color: var(--renk-beyaz);
+}
+
+nav a:focus-visible {
+  outline-color: var(--renk-beyaz);
+}
+
+main {
+  padding-block: var(--bosluk-m) var(--bosluk-b);
+}
+
+body > footer {
+  padding-block: var(--bosluk-m);
+  border-top: 1px solid var(--renk-kenar);
+  color: var(--renk-soluk);
+  font-size: 0.875rem;
+}
+
+body > footer p {
+  margin: 0;
+}
+
+/* ---------- Kartlar: section > article + display: grid ---------- */
+.kartlar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);   /* telefon: tek sütun */
+  gap: var(--bosluk-m);
+}
+
+.kartlar article {
+  display: flex;
+  flex-direction: column;
+  background: var(--renk-kart);
+  border: 1px solid var(--renk-kenar);
+  border-radius: var(--kose);
+  padding: var(--bosluk-m);
+}
+
+.kartlar article p:nth-of-type(1) {
+  color: var(--renk-soluk);
+}
+
+.kartlar article a {
+  margin-top: auto;
+}
+
+/* Bağlantılar parmakla rahat basılır */
+.kartlar article a,
+.baglantilar a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding-block: var(--bosluk-k);
+}
+
+.baglantilar {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--bosluk-b);
+}
+
+.baglantilar p {
+  margin: 0;
+}
+
+/* ---------- Ayın Programı tablosu (gerçek veri tablosu) ---------- */
+table {
+  width: 100%;
+  margin-top: var(--bosluk-b);
+  border-collapse: collapse;
+  background: var(--renk-kart);
+}
+
+caption {
+  text-align: left;
+  font-size: 1.35rem;
+  font-weight: bold;
+  padding-bottom: var(--bosluk-k);
+}
+
+th, td {
+  text-align: left;
+  padding: var(--bosluk-k);
+  border-bottom: 1px solid var(--renk-kenar);
+}
+
+th {
+  background: var(--renk-ana);
+  color: var(--renk-beyaz);
+}
+
+/* ---------- Etkinlik detay ---------- */
+main > article {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);   /* telefon: alt alta */
+  gap: var(--bosluk-k) var(--bosluk-b);
+  align-content: start;
+}
+
+figure {
+  margin: 0;
+}
+
+figure img {
+  display: block;
+  border-radius: var(--kose);
+  border: 1px solid var(--renk-kenar);
+}
+
+figcaption {
+  color: var(--renk-soluk);
+  font-size: 0.875rem;
+  margin-top: var(--bosluk-k);
+}
+
+dl {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: var(--bosluk-k) var(--bosluk-m);
+  margin: 0;
+  padding: var(--bosluk-m);
+  background: var(--renk-kart);
+  border: 1px solid var(--renk-kenar);
+  border-radius: var(--kose);
+}
+
+dt {
+  font-weight: bold;
+  color: var(--renk-ana);
+}
+
+dd {
+  margin: 0;
+}
+
+main > article > h2 {
+  margin-top: var(--bosluk-m);
+}
+
+/* ---------- Formlar ---------- */
+form {
+  max-width: 40rem;
+  padding: var(--bosluk-m);
+  background: var(--renk-kart);
+  border: 1px solid var(--renk-kenar);
+  border-radius: var(--kose);
+}
+
+form p {
+  margin: 0 0 var(--bosluk-m);
+}
+
+label {
+  display: block;                          /* label üstte */
+  font-weight: bold;
+  margin-bottom: var(--bosluk-k);
+}
+
+input,
+select,
+textarea {
+  display: block;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: var(--bosluk-k);
+  font: inherit;
+  color: var(--renk-metin);
+  background: var(--renk-beyaz);
+  border: 2px solid var(--renk-kenar);
+  border-radius: var(--kose);
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--renk-ana);
+}
+
+/* Hatalı alan kırmızı (Sprint 3: JavaScript aria-invalid="true" ekler) */
+input:user-invalid,
+select:user-invalid,
+textarea:user-invalid,
+[aria-invalid="true"] {
+  border-color: var(--renk-hata);
+  background: var(--renk-hata-zemin);
+}
+
+/* Alanın altındaki hata metni */
+form p > span {
+  display: block;
+  color: var(--renk-hata);
+  font-size: 0.875rem;
+}
+
+button {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: var(--bosluk-k) var(--bosluk-b);
+  font: inherit;
+  font-weight: bold;
+  color: var(--renk-beyaz);
+  background: var(--renk-ana);
+  border: 0;
+  border-radius: var(--kose);
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--renk-ana-koyu);
+}
+
+/* ---------- Filtre formu (etkinlikler) ---------- */
+.filtre {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);   /* telefon: alt alta */
+  gap: var(--bosluk-k) var(--bosluk-m);
+  margin-bottom: var(--bosluk-m);
+}
+
+/* ---------- Hata / başarı kutuları ---------- */
+.hata-kutusu,
+.basari-kutusu {
+  max-width: 40rem;
+  margin-top: var(--bosluk-m);
+  padding: var(--bosluk-m);
+  border: 1px solid;
+  border-radius: var(--kose);
+}
+
+.hata-kutusu {
+  color: var(--renk-hata);
+  background: var(--renk-hata-zemin);
+  border-color: var(--renk-hata);
+}
+
+.basari-kutusu {
+  color: var(--renk-basari);
+  background: var(--renk-basari-zemin);
+  border-color: var(--renk-basari);
+}
+
+pre {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+/* ---------- Geniş ekran ---------- */
+@media (min-width: 40rem) {
+  body > header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* birden fazla sütun; 2 kart varsa yan yana yarı yarıya, 3 kart varsa üç sütun */
+  .kartlar {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  }
+
+  /* filtre: arama ve kategori yan yana */
+  .filtre {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    grid-auto-flow: column;
+  }
+
+  /* afiş solda, künye sağda (afişi olan etkinlikte) */
+  main > article:has(> figure) {
+    grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+    grid-template-rows: repeat(4, max-content) 1fr;
+  }
+
+  main > article > figure {
+    grid-column: 1;
+    grid-row: 1 / span 5;
+  }
+
+  main > article:has(> figure) > :not(figure) {
+    grid-column: 2;
+  }
+
+  button {
+    width: auto;
+  }
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etkinlikler | Kampüs Etkinlikleri</title>
+  <link rel="stylesheet" href="css/2416501009.css">
+  <script type="module" src="js/event-list.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Kampüs Etkinlikleri</h1>
+    <nav>
+      <a href="index.html">Ana Sayfa</a>
+      <a href="etkinlikler.html">Etkinlikler</a>
+      <a href="etkinlik-ekle.html">Ekle</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2 id="tumu">Tüm Etkinlikler</h2>
+    <form id="filtre-formu" class="filtre">
+      <label for="arama">Etkinlik ara</label>
+      <input type="search" id="arama">
+      <label for="kategori-filtre">Kategori</label>
+      <select id="kategori-filtre">
+        <option value="">Tümü</option>
+      </select>
+    </form>
+    <p id="sonuc"></p>
+
+    <section id="etkinlik-listesi" class="kartlar" aria-labelledby="tumu"></section>
+
+    <table>
+      <caption>Ayın Programı</caption>
+      <tr>
+        <th>Tarih</th>
+        <th>Etkinlik</th>
+        <th>Yer</th>
+      </tr>
+      <tr>
+        <td><time datetime="2026-10-12">12 Ekim</time></td>
+        <td>Kariyer Günleri</td>
+        <td>A Blok</td>
+      </tr>
+      <tr>
+        <td><time datetime="2026-10-20">20 Ekim</time></td>
+        <td>Robotik Atölyesi</td>
+        <td>Lab 2</td>
+      </tr>
+      <tr>
+        <td><time datetime="2026-10-27">27 Ekim</time></td>
+        <td>Siber Güvenlik Söyleşisi</td>
+        <td>B Blok</td>
+      </tr>
+    </table>
+  </main>
+
+  <footer>
+    <p>Selim Memiş Çağan · 2416501009 · 2026</p>
+  </footer>
+</body>
+</html>

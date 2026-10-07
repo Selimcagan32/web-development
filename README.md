@@ -1,3 +1,5 @@
+https://web-development-tau-virid.vercel.app/index.html
+
 # Kampüs Etkinlikleri
 
 Bu repo, Süleyman Demirel Üniversitesi Bilgisayar Mühendisliği Web Teknolojileri ve Programlama dersi kapsamında geliştirdiğim ders içi çalışmaları içerir. Proje dönem boyunca sprintler hâlinde ilerler ve her sprint kendi klasöründe yer alır.
@@ -15,6 +17,12 @@ Kodlar `sprint1/` klasöründe yer alır.
 Kullanılan renk paleti ve yazı tipi öğrenci numarasından türetilmiştir.
 
 Kodlar `sprint2/` klasöründe, stil dosyası ise `sprint2/css/2416501009.css` konumunda bulunur.
+
+## Sprint 3 – JavaScript ve DOM
+
+Üçüncü sprintte sayfalara JavaScript ile işlev kazandırıldı. Etkinlik bilgileri tek bir veri dosyasında (`data.js`) tutulur ve kartlar bu veriden otomatik olarak üretilir. Ana sayfada tarihi en yakın iki etkinlik gösterilir; etkinlikler sayfasında arama ve kategori filtresi bulunur. Detay sayfası adresteki `?id=` değerine göre ilgili etkinliği açar. Ekleme ve güncelleme formları alanları kendisi doğrular ve hata ya da başarı mesajını sayfada gösterir. Bu sprintte veriler kalıcı olarak kaydedilmez.
+
+Kodlar `sprint3/` klasöründe, JavaScript modülleri ise `sprint3/js/` konumunda bulunur.
 
 ## Yayına Alma
 
