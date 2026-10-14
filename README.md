@@ -1,4 +1,4 @@
-https://web-development-tau-virid.vercel.app/index.html
+https://web-development-tau-virid.vercel.app/
 
 # Kampüs Etkinlikleri
 
@@ -24,13 +24,37 @@ Kodlar `sprint2/` klasöründe, stil dosyası ise `sprint2/css/2416501009.css` k
 
 Kodlar `sprint3/` klasöründe, JavaScript modülleri ise `sprint3/js/` konumunda bulunur.
 
+## Sprint 4 – Vite, TypeScript ve React
+
+Dördüncü sprintte site, Vite ile kurulan bir React + TypeScript projesine taşındı. Etkinliğin yapısı bir tip olarak tanımlandı, veriler bu tipe uygun şekilde ayrı bir dosyada tutuldu ve arama, kategori filtresi ve etkinlik bulma işlemleri saf fonksiyonlar olarak yazıldı. Beş sayfanın tamamı `App.tsx` içindedir; hangi sayfanın açık olduğu, arama metni ve seçili kategori state ile tutulur. Sekme başlığı `useEffect` ile açık sayfaya göre değişir. Ekleme ve güncelleme formları bu sprintte yalnızca görünüm olarak yer alır.
+
+Kodlar `frontend/` klasöründe bulunur. Yerelde çalıştırmak için:
+
+    cd frontend
+    npm install
+    npm run dev
+
+### Dosyalar
+
+- `package.json`: Proje adını, `dev` ve `build` gibi komutları ve kullanılan paketlerin listesini tutar.
+- `package-lock.json`: Yüklenen paketlerin tam sürümlerini kaydeder.
+- `node_modules/`: `npm install` ile indirilen paketlerin bulunduğu klasördür; GitHub'a gönderilmez.
+- `tsconfig*.json`: TypeScript derleyicisinin ayarlarını içerir.
+- `vite.config.ts`: Vite ayarlarını ve React eklentisini tanımlar.
+- `index.html`: Uygulamanın tek HTML dosyasıdır; React'in çizim yaptığı boş `div#root` buradadır.
+- `src/main.tsx`: React'i başlatır ve `App` bileşenini `root` içine çizer.
+- `src/App.tsx`: Uygulamanın ana bileşenidir; beş sayfanın hepsi burada yer alır.
+- `src/App.css`: Uygulamanın stilleridir; Sprint 3'teki CSS buraya taşındı.
+- `src/index.css`: Tüm sayfaya genel stil dosyasıdır; bu sprintte boştur.
+- `public/`: Build sırasında olduğu gibi kopyalanan dosyaları (afiş ve favicon) içerir.
+
 ## Yayına Alma
 
-Proje Vercel kullanılarak yayınlanmaktadır. Vercel ayarlarında framework olarak `Other` seçilir, herhangi bir build komutu kullanılmaz ve Root Directory olarak ilgili sprint klasörü belirtilir.
+Proje Vercel kullanılarak yayınlanmaktadır. Sprint 1–3'te framework olarak `Other` seçildi, build komutu kullanılmadı ve Root Directory olarak ilgili sprint klasörü belirtildi. Sprint 4'ten itibaren Root Directory `frontend`, framework ise `Vite` olarak ayarlanır; Vercel projeyi `npm run build` ile derleyip `dist` klasörünü yayınlar.
 
 Son sprintin canlı adresi:
 
-https://web-development-tau-virid.vercel.app/index.html
+https://web-development-tau-virid.vercel.app/
 
 ## Hazırlayan
 
