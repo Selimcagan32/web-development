@@ -48,6 +48,21 @@ Kodlar `frontend/` klasöründe bulunur. Yerelde çalıştırmak için:
 - `src/index.css`: Tüm sayfaya genel stil dosyasıdır; bu sprintte boştur.
 - `public/`: Build sırasında olduğu gibi kopyalanan dosyaları (afiş ve favicon) içerir.
 
+## Sprint 5 – React Bileşenleri
+
+Beşinci sprintte Sprint 4'teki tek büyük `App.tsx` bileşenlere bölündü. Her parça kendi dosyasında bir bileşen oldu; bileşenler veriyi props ile alır, olayları callback ile `App`'e bildirir. Sayfa, seçili etkinlik, arama metni ve kategori state'leri `App`'te kalır. Ekran Sprint 4 ile aynıdır.
+
+Kodlar yine `frontend/` klasöründe bulunur; yeni klasör açılmadı.
+
+### Dosyalar
+
+- `src/components/layout/`: Her sayfada görünen çerçeve bileşenleri `Header.tsx`, `Navigation.tsx` ve `Footer.tsx`.
+- `src/components/events/`: Etkinlik bileşenleri `EventCard.tsx`, `EventList.tsx`, `EventFilter.tsx` ve `EventDetail.tsx`.
+- `src/components/forms/EventForm.tsx`: Ekle ve Güncelle sayfalarının ortak formu.
+- `src/types/page.ts`: Sayfa adlarının tipi (`PageName`).
+- `src/utils/format-date.ts`: Tarihi Türkçe biçime çeviren `formatDate` fonksiyonu.
+- `src/App.tsx`: State'leri ve sayfa geçişini tutar, bileşenleri bir araya getirir.
+
 ## Yayına Alma
 
 Proje Vercel kullanılarak yayınlanmaktadır. Sprint 1–3'te framework olarak `Other` seçildi, build komutu kullanılmadı ve Root Directory olarak ilgili sprint klasörü belirtildi. Sprint 4'ten itibaren Root Directory `frontend`, framework ise `Vite` olarak ayarlanır; Vercel projeyi `npm run build` ile derleyip `dist` klasörünü yayınlar.
