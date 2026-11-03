@@ -1,4 +1,4 @@
-https://web-development-tau-virid.vercel.app/
+https://selimmemiscagan-frontend.vercel.app
 
 # Kampüs Etkinlikleri
 
@@ -63,13 +63,48 @@ Kodlar yine `frontend/` klasöründe bulunur; yeni klasör açılmadı.
 - `src/utils/format-date.ts`: Tarihi Türkçe biçime çeviren `formatDate` fonksiyonu.
 - `src/App.tsx`: State'leri ve sayfa geçişini tutar, bileşenleri bir araya getirir.
 
+## Sprint 6 – Router, Context ve Yönetim (Vize)
+
+Altıncı sprintte uygulamaya React Router eklendi ve her sayfa kendi adresine kavuştu. Sayfa state'i ve `go()` fonksiyonu kaldırıldı; hangi sayfanın açık olduğunu artık adres çubuğu belirler. Etkinlik listesi ile ekleme, güncelleme ve silme fonksiyonları tek bir Context'te tutulur, sayfalar bu verilere `useEvents()` ile doğrudan ulaşır. Yönetim sayfasında etkinlikler tablo hâlinde listelenir; tablo telefonda kartlara dönüşür. Etkinlik formu ile giriş, kayıt ve şifremi unuttum formları alanları doğrular ve hataları alanların altında gösterir. Bu sprintte giriş kontrolü yoktur, veriler kalıcı değildir (sayfa yenilenince başa döner) ve auth formları bilgileri hiçbir yere göndermez.
+
+Kodlar yine `frontend/` klasöründe bulunur. Yerelde çalıştırmak için:
+
+    cd frontend
+    npm install
+    npm run dev
+
+### Route listesi
+
+| Adres | Sayfa |
+| --- | --- |
+| `/` | HomePage |
+| `/events` | EventsPage |
+| `/events/:id` | EventDetailPage |
+| `/login` | LoginPage |
+| `/register` | RegisterPage |
+| `/forgot-password` | ForgotPasswordPage |
+| `/admin` | AdminPage |
+| `/admin/new` | AddEventPage |
+| `/admin/:id/edit` | EditEventPage |
+| `*` | NotFoundPage |
+
+### Dosyalar
+
+- `src/pages/`: Adrese bağlı 10 sayfa bileşeni.
+- `src/context/EventsContext.tsx`: Etkinlik listesi ile `addEvent`, `updateEvent`, `deleteEvent` fonksiyonlarını tutan `EventsProvider` ve bunları okuyan `useEvents` hook'u.
+- `src/utils/validate-event.ts`: Etkinlik formunu doğrulayan `validateEvent` fonksiyonu.
+- `src/types/campus-event.ts`: Form verisi için `EventFormData` ve hata tipi `EventFormErrors` eklendi.
+- `src/App.tsx`: Sadece Header, Navigation, Routes ve Footer; state yok.
+- `vercel.json`: Vercel'de `/admin` gibi adresler doğrudan açıldığında ya da sayfa yenilendiğinde `index.html`'in dönmesini sağlar.
+- `src/types/page.ts` silindi.
+
 ## Yayına Alma
 
-Proje Vercel kullanılarak yayınlanmaktadır. Sprint 1–3'te framework olarak `Other` seçildi, build komutu kullanılmadı ve Root Directory olarak ilgili sprint klasörü belirtildi. Sprint 4'ten itibaren Root Directory `frontend`, framework ise `Vite` olarak ayarlanır; Vercel projeyi `npm run build` ile derleyip `dist` klasörünü yayınlar.
+Proje Vercel kullanılarak yayınlanmaktadır. Sprint 1–3'te framework olarak `Other` seçildi, build komutu kullanılmadı ve Root Directory olarak ilgili sprint klasörü belirtildi. Sprint 4'ten itibaren Root Directory `frontend`, framework ise `Vite` olarak ayarlanır; Vercel projeyi `npm run build` ile derleyip `dist` klasörünü yayınlar. Sprint 6'dan itibaren proje `selimmemiscagan-frontend` adıyla yayınlanır.
 
 Son sprintin canlı adresi:
 
-https://web-development-tau-virid.vercel.app/
+https://selimmemiscagan-frontend.vercel.app
 
 ## Hazırlayan
 

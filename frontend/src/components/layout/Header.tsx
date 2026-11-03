@@ -1,17 +1,7 @@
-import type { ReactNode } from "react";
-
-interface HeaderProps {
-  title: string;
-  text?: string;
-  children?: ReactNode;
-}
-
-function Header({ title, text, children }: HeaderProps) {
+function Header() {
   return (
     <header>
-      <h1>{title}</h1>
-      {text && <p>{text}</p>}
-      {children}
+      <h1>Kampüs Etkinlikleri</h1>
     </header>
   );
 }

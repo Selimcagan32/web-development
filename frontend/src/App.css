@@ -81,6 +81,7 @@ img {
 
 /* Header, main ve footer aynı ortalı genişlikte */
 #root > header,
+#root > nav,
 #root > main,
 #root > footer {
   padding-inline: max(var(--bosluk-m), calc((100% - var(--icerik-genislik)) / 2));
@@ -99,6 +100,12 @@ img {
 #root > header h1 {
   font-size: 1.5rem;
   margin: 0;
+}
+
+/* Sprint 6: menü header'ın altında, aynı yeşil zeminde */
+#root > nav {
+  background: var(--renk-ana);
+  padding-block-end: var(--bosluk-m);
 }
 
 nav {
@@ -190,7 +197,7 @@ main {
   margin: 0;
 }
 
-/* ---------- Ayın Programı tablosu (gerçek veri tablosu) ---------- */
+/* ---------- Tablo (Sprint 6: yönetim tablosu bu temel stili kullanır) ---------- */
 table {
   width: 100%;
   margin-top: var(--bosluk-b);
@@ -323,7 +330,12 @@ form p > span {
   font-size: 0.875rem;
 }
 
-button {
+button,
+.buton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
   width: 100%;
   min-height: 2.75rem;
   padding: var(--bosluk-k) var(--bosluk-b);
@@ -336,8 +348,10 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+button:hover,
+.buton:hover {
   background: var(--renk-ana-koyu);
+  color: var(--renk-beyaz);
 }
 
 /* ---------- Filtre formu (etkinlikler) ---------- */
@@ -410,7 +424,35 @@ pre {
     grid-column: 2;
   }
 
-  button {
+  button,
+  .buton {
     width: auto;
+  }
+}
+
+/* ---------- Sprint 6: Yönetim tablosu ---------- */
+.tablo { width: 100%; border-collapse: collapse; }
+.tablo th { background: var(--renk-ana); color: var(--renk-beyaz); }
+.islemler { display: flex; gap: var(--bosluk-k); }
+.buton-sil,
+.buton-sil:hover { background: var(--renk-hata); }
+
+/* Telefonda her satır bir kart */
+@media (max-width: 699px) {
+  .tablo { background: none; }
+  .tablo thead { display: none; }
+  .tablo tr {
+    display: block;
+    margin-bottom: var(--bosluk-m);
+    padding: var(--bosluk-k);
+    background: var(--renk-kart);
+    border: 1px solid var(--renk-kenar);
+    border-radius: var(--kose);
+  }
+  .tablo td { display: block; border: 0; }
+  .tablo td.islemler { display: flex; }
+  .tablo td[data-baslik]::before {
+    content: attr(data-baslik) ": ";
+    font-weight: 700;
   }
 }
