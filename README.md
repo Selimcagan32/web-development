@@ -98,9 +98,41 @@ Kodlar yine `frontend/` klasöründe bulunur. Yerelde çalıştırmak için:
 - `vercel.json`: Vercel'de `/admin` gibi adresler doğrudan açıldığında ya da sayfa yenilendiğinde `index.html`'in dönmesini sağlar.
 - `src/types/page.ts` silindi.
 
+## Sprint 7 – Express ile REST API
+
+Yedinci sprintte `frontend/` klasörünün yanına ikinci bir uygulama olarak `backend/` eklendi. Node ve Express ile yazılan bu sunucu etkinlikleri JSON olarak verir. Etkinlikler şimdilik bellekte bir dizide tutulur; sunucu yeniden başlayınca `POST` ile eklenenler kaybolur. Port `.env` dosyasından okunur, `.env` yoksa sunucu 3000 portunda açılır. `frontend/` bu sprintte değişmedi.
+
+Yerelde çalıştırmak için:
+
+    cd backend
+    npm install
+    npm run dev
+
+Sunucu `http://localhost:3000` adresinde açılır. REST sözleşmesi tablosu `backend/README.md` dosyasındadır.
+
+### Endpoint listesi
+
+| Method | Adres | Sonuç |
+| --- | --- | --- |
+| GET | `/health` | 200 · sunucu durumu ve öğrenci numarası |
+| GET | `/events` | 200 · etkinlik listesi (`?category=` ile filtrelenebilir) |
+| GET | `/events/:id` | 200 · tek etkinlik, bulunamazsa 404 |
+| POST | `/events` | 201 · yeni etkinlik, eksik veride 400 |
+
+### Dosyalar
+
+- `backend/src/app.js`: Express uygulamasını kurar, middleware'leri (`cors`, `express.json`) ve route'ları bağlar; `/health` burada tanımlıdır.
+- `backend/src/server.js`: `.env`'i okur ve sunucuyu porta bağlar.
+- `backend/src/routes/event-routes.js`: Hangi adresin hangi controller fonksiyonuna gideceğini belirler.
+- `backend/src/controllers/event-controller.js`: İstekleri işleyip yanıtı döndüren `getEvents`, `getEventById` ve `createEvent` fonksiyonları.
+- `backend/src/data/events.js`: Bellek içi 6 etkinlik.
+- `backend/requests/kampus-api.json`: Postman ile denenen 6 isteğin "Kampüs API" collection'ı.
+- `backend/.env.example`: Gerekli ortam değişkenleri (`PORT`); `.env` GitHub'a gönderilmez.
+- `backend/README.md`: Çalıştırma komutları, `PORT` değişkeni ve REST sözleşmesi.
+
 ## Yayına Alma
 
-Proje Vercel kullanılarak yayınlanmaktadır. Sprint 1–3'te framework olarak `Other` seçildi, build komutu kullanılmadı ve Root Directory olarak ilgili sprint klasörü belirtildi. Sprint 4'ten itibaren Root Directory `frontend`, framework ise `Vite` olarak ayarlanır; Vercel projeyi `npm run build` ile derleyip `dist` klasörünü yayınlar. Sprint 6'dan itibaren proje `selimmemiscagan-frontend` adıyla yayınlanır.
+Proje Vercel kullanılarak yayınlanmaktadır. Sprint 1–3'te framework olarak `Other` seçildi, build komutu kullanılmadı ve Root Directory olarak ilgili sprint klasörü belirtildi. Sprint 4'ten itibaren Root Directory `frontend`, framework ise `Vite` olarak ayarlanır; Vercel projeyi `npm run build` ile derleyip `dist` klasörünü yayınlar. Sprint 6'dan itibaren proje `selimmemiscagan-frontend` adıyla yayınlanır. Sprint 7'de eklenen `backend/` yayına alınmadı; yalnızca yerelde çalışır.
 
 Son sprintin canlı adresi:
 
