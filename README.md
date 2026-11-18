@@ -130,6 +130,40 @@ Sunucu `http://localhost:3000` adresinde açılır. REST sözleşmesi tablosu `b
 - `backend/.env.example`: Gerekli ortam değişkenleri (`PORT`); `.env` GitHub'a gönderilmez.
 - `backend/README.md`: Çalıştırma komutları, `PORT` değişkeni ve REST sözleşmesi.
 
+## Sprint 8 – MongoDB ve Mongoose
+
+Sekizinci sprintte etkinlikler bellekteki diziden çıkarılıp MongoDB'deki `kampus` veritabanının `events` collection'ına taşındı. Veritabanıyla Mongoose üzerinden konuşulur. Adresler ve status kodları Sprint 7 ile aynıdır; değişen, controller'ların dizi yerine `Event` modelini kullanması ve her etkinliğin kimliğinin artık MongoDB'nin verdiği `_id` olmasıdır. Sunucu kapanıp açılınca `POST` ile eklenen etkinlikler kaybolmaz. Örnek veri `npm run seed` ile veritabanına girer. `frontend/` bu sprintte değişmedi.
+
+Bağlantı adresi yalnızca `backend/.env` dosyasındaki `MONGODB_URI` değişkeninden okunur; gerçek adres ve şifre GitHub'a gönderilmez. Yerelde çalıştırmak için:
+
+    cd backend
+    npm install
+    npm run seed
+    npm run dev
+
+### Endpoint listesi
+
+| Method | Adres | Sonuç |
+| --- | --- | --- |
+| GET | `/health` | 200 · sunucu durumu ve öğrenci numarası |
+| GET | `/events` | 200 · MongoDB'deki etkinlik listesi (`?category=` ile filtrelenebilir) |
+| GET | `/events/:id` | 200 · `_id` ile tek etkinlik; kayıt yoksa ya da id geçersizse 404 |
+| POST | `/events` | 201 · yeni etkinlik `_id` ve `createdAt` ile döner; schema kuralına uymayan veride 400 |
+
+### Dosyalar
+
+- `backend/src/config/database.js`: `MONGODB_URI` ile MongoDB'ye bağlanan `connectDatabase` fonksiyonu.
+- `backend/src/models/event-model.js`: Etkinlik schema'sı (zorunlu alanlar, uzunluk sınırları, kategori listesi, `timestamps`) ve `Event` modeli.
+- `backend/src/data/seed-events.js`: Sprint 7'deki `events.js` dizisi buraya taşındı; `id` alanları kaldırıldı.
+- `backend/src/seed.js`: Veritabanındaki etkinlikleri silip 6 örnek etkinliği ekler; kaç kez çalışırsa çalışsın 6 kayıt kalır.
+- `backend/src/controllers/event-controller.js`: `getEvents`, `getEventById` ve `createEvent` artık `Event.find`, `Event.findById` ve `Event.create` kullanır.
+- `backend/src/app.js`: Beklenmeyen hatalar için en sona hata middleware'i eklendi.
+- `backend/src/server.js`: Önce veritabanına bağlanır, sonra sunucuyu başlatır.
+- `backend/package.json`: `mongoose` paketi ve `seed` komutu eklendi.
+- `backend/.env.example`: `MONGODB_URI` satırı eklendi (yer tutucu değer).
+- `backend/requests/kampus-api.json`: Tek etkinlik isteği `event-2` yerine bir `_id` ile güncellendi.
+- `backend/src/data/events.js` silindi.
+
 ## Yayına Alma
 
 Proje Vercel kullanılarak yayınlanmaktadır. Sprint 1–3'te framework olarak `Other` seçildi, build komutu kullanılmadı ve Root Directory olarak ilgili sprint klasörü belirtildi. Sprint 4'ten itibaren Root Directory `frontend`, framework ise `Vite` olarak ayarlanır; Vercel projeyi `npm run build` ile derleyip `dist` klasörünü yayınlar. Sprint 6'dan itibaren proje `selimmemiscagan-frontend` adıyla yayınlanır. Sprint 7'de eklenen `backend/` yayına alınmadı; yalnızca yerelde çalışır.

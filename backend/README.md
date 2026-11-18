@@ -1,12 +1,15 @@
 # Kampüs Etkinlikleri API
 
-Etkinlikleri JSON olarak veren Node + Express sunucusu. Veriler şimdilik bellekte tutulur; sunucu yeniden başlayınca `POST` ile eklenen etkinlikler kaybolur.
+Etkinlikleri JSON olarak veren Node + Express sunucusu. Veriler MongoDB'de (`kampus` veritabanı, `events` collection'ı) tutulur; sunucu yeniden başlayınca `POST` ile eklenen etkinlikler kaybolmaz.
 
 ## Çalıştırma
 
     cd backend
     npm install
+    npm run seed
     npm run dev
+
+`npm run seed` veritabanındaki etkinlikleri silip 6 örnek etkinliği ekler.
 
 `npm run dev` sunucuyu `node --watch` ile başlatır; dosya değişince sunucu yeniden başlar. Yeniden başlatma olmadan çalıştırmak için `npm start` kullanılır.
 
@@ -17,12 +20,13 @@ Sunucu varsayılan olarak `http://localhost:3000` adresinde açılır. Sunucunun
 | Değişken | Açıklama | Varsayılan |
 | --- | --- | --- |
 | `PORT` | Sunucunun dinlediği port | `3000` |
+| `MONGODB_URI` | MongoDB bağlantı adresi | — (zorunlu) |
 
 `.env.example` dosyası `.env` adıyla kopyalanıp değer değiştirilebilir:
 
     cp .env.example .env
 
-`.env` GitHub'a gönderilmez. `.env` yoksa sunucu 3000 portunda açılır.
+`.env` GitHub'a gönderilmez. `PORT` yoksa sunucu 3000 portunda açılır; `MONGODB_URI` yoksa sunucu başlamaz.
 
 ## REST sözleşmesi
 
