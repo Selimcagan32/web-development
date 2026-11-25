@@ -164,6 +164,40 @@ Bağlantı adresi yalnızca `backend/.env` dosyasındaki `MONGODB_URI` değişke
 - `backend/requests/kampus-api.json`: Tek etkinlik isteği `event-2` yerine bir `_id` ile güncellendi.
 - `backend/src/data/events.js` silindi.
 
+## Sprint 9 – Tam CRUD ve Sorgular
+
+Dokuzuncu sprintte API'ye güncelleme, silme, arama ve yaklaşan etkinlikler eklendi. `PATCH` bir etkinliğin yalnızca gönderilen alanlarını değiştirir ve güncel kaydı döndürür; `DELETE` etkinliği siler ve gövdesiz 204 döner. `GET /events` artık `?search=` ile başlıkta arama yapar (büyük/küçük harf fark etmez) ve `?category=` ile birlikte kullanılabilir. `GET /events/upcoming` bugün ve sonrasındaki etkinlikleri en yakından başlayarak listeler. Tarihler API'de "GG-AA-YYYY" (`15-10-2026`) biçiminde alınıp verilir, veritabanında ise gerçek tarih olarak tutulur. Hata biçimi Sprint 8 ile aynıdır; geçersiz ya da olmayan id her yerde 404 döner. `frontend/` bu sprintte değişmedi.
+
+Yerelde çalıştırmak için:
+
+    cd backend
+    npm install
+    npm run seed
+    npm run dev
+
+### Endpoint listesi
+
+| Method | Adres | Sonuç |
+| --- | --- | --- |
+| GET | `/health` | 200 · sunucu durumu ve öğrenci numarası |
+| GET | `/events` | 200 · etkinlik listesi (`?search=` ve `?category=` ile aranıp filtrelenebilir) |
+| GET | `/events/upcoming` | 200 · bugün ve sonrasındaki etkinlikler, tarihe göre sıralı |
+| GET | `/events/:id` | 200 · `_id` ile tek etkinlik; kayıt yoksa ya da id geçersizse 404 |
+| POST | `/events` | 201 · yeni etkinlik; schema kuralına uymayan veride 400 |
+| PATCH | `/events/:id` | 200 · güncel kayıt; boş body, değiştirilemeyen alan ya da geçersiz veride 400, kayıt yoksa 404 |
+| DELETE | `/events/:id` | 204 · gövde yok; kayıt yoksa 404 |
+
+### Dosyalar
+
+- `backend/src/utils/date.js`: "GG-AA-YYYY" metnini tarihe çeviren `parseDate`, tarihi metne çeviren `formatDate` ve günün başlangıcını veren `todayStart` fonksiyonları.
+- `backend/src/models/event-model.js`: `date` alanı metinden gerçek tarihe çevrildi; kaydederken ve yanıt verirken `date.js` fonksiyonları kullanılır.
+- `backend/src/controllers/event-controller.js`: `updateEvent`, `deleteEvent` ve `getUpcomingEvents` eklendi; `getEvents` aramayı destekler; 404 yanıtı tek bir `notFound` fonksiyonunda toplandı.
+- `backend/src/routes/event-routes.js`: `PATCH` ve `DELETE` route'ları eklendi; `/upcoming`, `/:id`'den önce yazıldı.
+- `backend/src/data/seed-events.js`: Tarihler "GG-AA-YYYY" biçimine çevrildi; iki etkinlik geçmiş tarihli yapıldı.
+- `backend/requests/kampus-api.json`: Sprint 9'un 18 isteklik collection'ı.
+- `backend/requests/run-results.json`: Collection Runner sonucu (18 istek, 45 test).
+- `backend/README.md`: REST sözleşmesi tablosu güncellendi.
+
 ## Yayına Alma
 
 Proje Vercel kullanılarak yayınlanmaktadır. Sprint 1–3'te framework olarak `Other` seçildi, build komutu kullanılmadı ve Root Directory olarak ilgili sprint klasörü belirtildi. Sprint 4'ten itibaren Root Directory `frontend`, framework ise `Vite` olarak ayarlanır; Vercel projeyi `npm run build` ile derleyip `dist` klasörünü yayınlar. Sprint 6'dan itibaren proje `selimmemiscagan-frontend` adıyla yayınlanır. Sprint 7'de eklenen `backend/` yayına alınmadı; yalnızca yerelde çalışır.

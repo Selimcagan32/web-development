@@ -33,10 +33,12 @@ Sunucu varsayılan olarak `http://localhost:3000` adresinde açılır. Sunucunun
 | Method | Endpoint | Amaç | Başarılı | Hata | Durum |
 | --- | --- | --- | --- | --- | --- |
 | GET | `/events` | Listeyi getir | 200 | — | Bu sprint |
+| GET | `/events?search=&category=` | Ara ve filtrele | 200 | — | çalışıyor |
+| GET | `/events/upcoming` | Yaklaşan etkinlikler | 200 · tarihe göre sıralı | — | çalışıyor |
 | GET | `/events/:id` | Tek etkinlik | 200 | 404 | Bu sprint |
 | POST | `/events` | Yeni etkinlik | 201 | 400 | Bu sprint |
-| PATCH | `/events/:id` | Güncelle | 200 | 400, 404 | Sprint 9 |
-| DELETE | `/events/:id` | Sil | 204 | 404 | Sprint 9 |
+| PATCH | `/events/:id` | Güncelle | 200 | 400, 404 | çalışıyor |
+| DELETE | `/events/:id` | Sil | 204 | 404 | çalışıyor |
 
 `GET /events?category=Atölye` yalnızca o kategorideki etkinlikleri döndürür. `POST /events` için `title`, `category` ve `date` zorunludur.
 
